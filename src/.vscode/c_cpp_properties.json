@@ -7,6 +7,8 @@
                 "${env.HOME}/linux-build/include",
                 "${env.HOME}/linux-build/arch/arm/include",
                 "${env.HOME}/linux-build/arch/arm/include/generated/",
+                "${env.HOME}/linux-build/arch/arm/include/uapi/",
+                "${env.HOME}/linux-build/arch/arm/include/generated/uapi/",
                 "${env.HOME}/arm-cross-comp-env/arm-raspbian-linux-gnueabihf/arm-raspbian-linux-gnueabihf/sysroot/usr/lib/gcc/arm-linux-gnueabihf/14/include/",
             ],
             "defines": [
