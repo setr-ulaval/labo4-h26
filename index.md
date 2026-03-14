@@ -41,7 +41,8 @@ Les ébauches de code sont disponibles sur le dépôt Git suivant : [https://git
 La compilation et l'édition de liens d'un module noyau constituent probablement une des tâches les plus délicates pour un environnement de compilation croisée. Le noyau Linux possède son propre système de compilation, basé sur *Make*; nous n'utiliserons donc pas CMake dans le cadre de ce laboratoire.
 
 ### 3.1. Téléchargement du noyau
-Compiler un module noyau requiert d'avoir une version compilée du noyau sur votre machine hôte. Vous devez télécharger l'archive [suivante](https://wcours.gel.ulaval.ca/GIF3004/setrh25/linux-rpi-6.1.54-rt15.compiled.tar.gz) dans le dossier `$HOME/rPi` de la VM ou de votre ordinateur. Pour que le laboratoire fonctionne, le chemin suivant doit contenir les fichiers : `$HOME/rPi/linux-rpi-6.1.54-rt15.compiled/linux-rpi-6.1.54-rt15` (où `$HOME` est par exemple `/home/setr` dans le cas de la machine virtuelle Fedora fournie). Si vous souhaitez installer le noyau dans un autre dossier, assurez vous de modifier la ligne 5 du `Makefile` du projet avec votre propre chemin.
+
+Compiler un module noyau requiert d'avoir une version compilée du noyau sur votre machine hôte. Heureusement, grâce à vos manipulations du laboratoire 1, c'est votre cas! Vous devriez avoir, dans `$HOME/linux-build`, le dossier contenant le noyau compilé pour votre Raspberry Pi Zero W. Si, pour une raison ou une autre, vous avez compilé ou installé le noyau ailleurs, modifiez la ligne 4 du `Makefile` du projet (celle qui déclare `KERNEL_SRC`) avec votre propre chemin.
 
 
 ### 3.2. Procédure de compilation
@@ -170,7 +171,7 @@ Le barême d'évaluation détaillé sera le suivant (laboratoire noté sur 20 po
 
 #### 5.1.1. Qualité du code remis (7 points)
 
-* (4 pts) Le code C est valide, complet, ne contient pas d'erreurs empêchant le bon déroulement des programmes et utilise l'API "GPIO Descriptor Consumer Interface" (les fonctions dont le nom commence par `gpiod_`).
+* (4 pts) Le code C est valide, complet, ne contient pas d'erreurs empêchant le bon déroulement des programmes et utilise l'API "GPIO Descriptor Consumer Interface" (les fonctions dont le nom commence par `gpiod_`). La libération des ressources est effectuée correctement, à la fois lors du retrait du module *et* en cas d'erreur lors de l'initialisation.
 * (1 pts) Les deux modules compilent sans avertissement (*warning*) de la part du compilateur.
 * (2 pts) La synchronisation entre le thread d'écriture et la fonction de lecture est adéquate, de même que la gestion du tampon circulaire.
 
